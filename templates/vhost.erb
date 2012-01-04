@@ -1,0 +1,34 @@
+<VirtualHost *:80>
+    ServerAdmin          <%= admin %>
+    DocumentRoot         <%= docroot %><%= docroot_suffix %>
+    ServerName           <%= realdomain %>
+    <% aliases.each do |al| -%>
+      ServerAlias          <%= al %>
+    <% end -%>
+
+        # Allow directory listings so that people can browse the repository from their browser too
+        <Directory "<%= scope.lookupvar('reprepro::params::repo_base_dir') %>">
+                Options Indexes FollowSymLinks MultiViews
+                DirectoryIndex index.html
+                AllowOverride Options
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        # Hide the conf/ directory for all repositories
+        <Directory "<%= scope.lookupvar('reprepro::params::repo_base_dir') %>/*/conf">
+                Order allow,deny
+                Deny from all
+                Satisfy all
+        </Directory>
+
+        # Hide the db/ directory for all repositories
+        <Directory "<%= scope.lookupvar('reprepro::params::repo_base_dir') %>/*/db">
+                Order allow,deny
+                Deny from all
+                Satisfy all
+        </Directory>
+
+    CustomLog /var/log/apache2/access.<%= name %>.log vhost_combined
+
+</VirtualHost>

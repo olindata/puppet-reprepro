@@ -1,0 +1,12 @@
+<% codenames.each do |codename| -%>Origin: <%= origin %>
+Label: <%= label %>
+Codename: <%= codename %>
+Suite: <%= suites %>
+Architectures: <%= architectures %>
+Components: <%= components %>
+Description: <%= description %><% if signed %>
+SignWith: yes<% end %>
+DebOverride: override.<%= codename %>
+DscOverride: override.<%= codename %>
+
+<% end -%>

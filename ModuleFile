@@ -1,0 +1,9 @@
+name 'tribily-reprepro'
+version '1.0'
+
+author 'Walter Heck'
+license 'GPL v2'
+project_page 'https://github.com/Tribily/puppet-reprepro'
+source 'https://github.com/Tribily/puppet-reprepro'
+summary 'Puppet module for reprepro'
+description ''
