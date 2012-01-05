@@ -1,6 +1,6 @@
 # dummy define just to be able to iterate through an array..
-define reprepro::repo::dummyloop($distribution, $codename) {
-  file { "${reprepro::params::repo_base_dir}/${distribution}/conf/override.${codename}":
+define reprepro::repo::dummyloop($distribution) {
+  file { "${reprepro::params::repo_base_dir}/${distribution}/conf/override.${name}":
     ensure => "present"
   }    
 }
@@ -17,9 +17,8 @@ define reprepro::repo($distribution, $codenames, $origin, $label, $description, 
     ensure => "directory"
   }
 
-  reprepro::repo::dummyloop { "${distribution}-${codenames}": 
-    distribution => $distribution,
-    codename     => $codenames
+  reprepro::repo::dummyloop { $codenames: 
+    distribution => $distribution
   }
   
   file { "${reprepro::params::repo_base_dir}/${distribution}/conf/distributions":
