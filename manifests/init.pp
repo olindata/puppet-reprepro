@@ -3,6 +3,9 @@
 # This module builds a local apt repository
 
 class reprepro {
+  
+  include reprepro::params
+  
   package { "reprepro":
     ensure => 'present'
   }

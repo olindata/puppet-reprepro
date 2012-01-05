@@ -6,7 +6,9 @@ define reprepro::repo::dummyloop($distribution) {
 }
 
 define reprepro::repo($distribution, $codenames, $origin, $label, $description, $architectures = 'i386 amd64 source', $suites = 'stable', $components = 'main', $signed = false) {
-  
+
+  include reprepro::params
+
   file { "${reprepro::params::repo_base_dir}/${distribution}":
     ensure => "directory"
   }
