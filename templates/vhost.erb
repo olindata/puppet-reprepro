@@ -1,7 +1,7 @@
 <VirtualHost *:80>
     ServerAdmin          <%= admin %>
     DocumentRoot         <%= docroot %><%= docroot_suffix %>
-    ServerName           <%= realdomain %>
+    ServerName           <%= domain %>
     <% aliases.each do |al| -%>
       ServerAlias          <%= al %>
     <% end -%>
